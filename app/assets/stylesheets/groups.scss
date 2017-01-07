@@ -1,0 +1,40 @@
+// Place all the styles related to the Groups controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form-group {
+	width: 500px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.dropdown {
+	text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+}
+.checkbox {
+	margin-left: auto;
+	margin-right: auto;
+	width: 20px;
+}
+.checkboxLabel {
+	width: 1277px;
+    text-align: center;
+    margin-top: 15px;
+}
+.submitButton {
+	margin-left: 605px;
+    margin-top: 20px;
+}
+.pg {
+	font-size: 6em;
+    font-family: 'Pacifico', cursive;    
+    font-weight: bold;
+    background-color: rgba(74, 154, 24, 0.72);
+    padding-top: 1px;
+    margin-top: -25px;
+    color: white;
+}
+
