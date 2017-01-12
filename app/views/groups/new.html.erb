@@ -8,10 +8,24 @@
         </div>
     </div>
 
-    <form>
+    <%= bootstrap_form_for(@group) do |f| %>
+      <%= f.text_field :group_name, placeholder: "i.e. Fantastic Foodies", required: true %>
+      <%= f.text_field :location, placeholder: "i.e. San Francisco", required: true %>
+      <%= f.text_field :keyword, placeholder: "(Optional) Enter a search word. i.e. Vegetarian" %>
+      <%= f.select :rating_filter, [["1 Star +" , 1], ["2 Star +", 2], ["3 Star +", 3], ["4 Star +", 4], ["5 Star", 5]], { label: "Filter by Rating" }, { class: "selectpicker" } %>
+      <%= f.form_group :cost_filter do %>
+          <%= f.check_box :cost_filter1, label: "$", inline: true, checked: true %>
+          <%= f.check_box :cost_filter2, label: "$$", inline: true %>
+          <%= f.check_box :cost_filter3, label: "$$$", inline: true %>
+          <%= f.check_box :cost_filter4, label: "$$$$", inline: true %>
+      <% end %>
+      <%= f.submit "Submit", class: "submitButton"%>
+    <% end %>
+
+<!--     <form action="/groups" method="POST">
       <div class="form-group">
     	<label for="groupName">Group Name</label>
-    	<input type="email" class="form-control" id="groupName" placeholder="Fantastic Foodies">
+    	<input type="text" class="form-control" id="groupName" placeholder="Fantastic Foodies">
       </div>
       <div class="dropdown">
           <label for="ratingFilter">Filter By Rating</label>
@@ -51,5 +65,5 @@
       <div class="submitButton">
         <button type="submit" class="btn btn-default">Submit</button>
       </div>
-    </form>
+    </form> -->
 </div>
