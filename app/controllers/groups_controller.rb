@@ -5,8 +5,8 @@ class GroupsController < ApplicationController
 
 	def show
 	    @group = Group.find_by(access_token: params[:access_token])
-	    yelp_authentication = post_test
-	    @restaurants = search(@group.rating_filter, @group.location, @group.keyword, @group.cost_filter1, @group.cost_filter2, @group.cost_filter3, @group.cost_filter4, yelp_authentication[0], yelp_authentication[1], yelp_authentication[2])
+	    # yelp_authentication = post_test
+	    @restaurants = search(@group.rating_filter, @group.location, @group.keyword, @group.cost_filter1, @group.cost_filter2, @group.cost_filter3, @group.cost_filter4)
 		# redirect_to @group
 	end
 	
@@ -21,8 +21,9 @@ class GroupsController < ApplicationController
 	  @group.access_token = Group.generate_unique_secure_token
 	  
 	  @group.save
-	  yelp_authentication = post_test
-	  @restaurants = search(@group.rating_filter, @group.location, @group.keyword, @group.cost_filter1, @group.cost_filter2, @group.cost_filter3, @group.cost_filter4, yelp_authentication[0], yelp_authentication[1], yelp_authentication[2])
+	  # yelp_authentication = post_test
+	  @restaurants = search(@group.rating_filter, @group.location, @group.keyword, @group.cost_filter1, @group.cost_filter2, @group.cost_filter3, @group.cost_filter4)
+	  puts @restaurants
 	  redirect_to @group
 	end
 
@@ -46,22 +47,21 @@ class GroupsController < ApplicationController
 	  return [json["access_token"], json["token_type"], json["expires_in"]]
 	end
 	
-    def search(rating_filter, location, keyword, cost_filter1, cost_filter2, cost_filter3, cost_filter4, access_token, token_type, expires_in)
-	  require "net/http"
+    def search(rating_filter, location, keyword, cost_filter1, cost_filter2, cost_filter3, cost_filter4)
 	  require "uri"
 	  require "json"
 
-	  uri = URI.parse("https://api.yelp.com/v3/businesses/search" + "?" + "term=" + keyword + "&location=" + location)
+	  uri = URI.parse("https://developers.zomato.com/api/v2.1/search" + "?" + "q=" + keyword + "&entity_id" + location)
 	  http = Net::HTTP.new(uri.host, uri.port)
 	  http.use_ssl = true
 
 	  request = Net::HTTP::Get.new(uri.request_uri)
-	  request['authorization'] = "Bearer " + access_token
+	  request['user-key'] = "f320d620b609e8b9b0d36d79a4f2c85a"
 	  # request.set_form_data({"location" => location, "term" => keyword})
 
 	  response = http.request(request)      # => 301
 	  json = JSON.parse(response.body)            # => The body (HTML, XML, blob, whatever)
-	  return json["businesses"]
+	  return json["restaurants"]
 	end
 
 	private

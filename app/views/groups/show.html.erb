@@ -9,20 +9,21 @@
     </div>
 <p>
 
-<h3>Group Name: <%= @group.group_name %></h3>
-
+<div class="group_header">
+  <h1>Group Name: <%= @group.group_name %></h1>
+</div>
 <% for item in @restaurants %>
 <ul id="ul-example" class="row-fluid">
   <li class="span4" data-color="gray">
     <div class="thumbnail">
       <div class="thumbnail-image">
-        <img src=<%= item["image_url"] %> />
+        <img src=<%= item["restaurant"]["thumb"] %> />
       </div>
       <div class="caption">
-        <h3><%= item["name"] %></h3>
+        <h3><%= item["restaurant"]["name"] %></h3>
         <p>State: Colorado</p>
         <p>Year: 1982</p>
-        <p><a href="http://en.wikipedia.org/wiki/Stegosaurus" class="btn btn-primary">View</a> <a href="#" class="btn">View</a></p>
+        <p><a href=<%= item["url"]%> class="btn btn-primary">Learn More</a> <a href="#" class="btn">View</a></p>
       </div>
     </div>
   </li>

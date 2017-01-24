@@ -40,24 +40,29 @@
 
 img {
     width: 300px;
-    height: 200px;
+    height: 220px;
 }
 
 .thumbnail {
     width: 310px;
+    height: 450px;
 }
 
 .span4 {
-    width: 310px;
+    width: 25%;
     display: inline-block
 }
 
 .row-fluid {
-    width: 310px;
-    margin: 37px;
+    margin-right: 5%;
     float: left;
     padding: 0;
     text-align: center;
+}
+
+.group_header{
+    text-align: center;
+    margin-bottom: 10%;
 }
 
 a { color: inherit !important; } 
