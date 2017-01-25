@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   get 'welcome/index'
-  resources :groups, param: :access_token
+  resources :users
+  resources :groups, param: :access_token do
+  	resources :users, path: '/results'
+  end
+
 
 
   root 'welcome#index'

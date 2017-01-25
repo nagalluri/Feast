@@ -6,6 +6,7 @@ class GroupsController < ApplicationController
 	def show
 	    @group = Group.find_by(access_token: params[:access_token])
 	    # yelp_authentication = post_test
+	    @user = User.new
 	    @restaurants = search(@group.rating_filter, @group.location, @group.keyword, @group.cost_filter1, @group.cost_filter2, @group.cost_filter3, @group.cost_filter4)
 		# redirect_to @group
 	end
@@ -23,7 +24,6 @@ class GroupsController < ApplicationController
 	  @group.save
 	  # yelp_authentication = post_test
 	  @restaurants = search(@group.rating_filter, @group.location, @group.keyword, @group.cost_filter1, @group.cost_filter2, @group.cost_filter3, @group.cost_filter4)
-	  puts @restaurants
 	  redirect_to @group
 	end
 

@@ -12,23 +12,30 @@
 <div class="group_header">
   <h1>Group Name: <%= @group.group_name %></h1>
 </div>
-<% for item in @restaurants %>
-<ul id="ul-example" class="row-fluid">
-  <li class="span4" data-color="gray">
-    <div class="thumbnail">
-      <div class="thumbnail-image">
-        <img src=<%= item["restaurant"]["thumb"] %> />
+  <%= bootstrap_form_for @user, :url => group_users_path(group_access_token: @group.access_token) do |f| %>
+  <%= f.text_field :username, placeholder: "Enter your name here", required: true %>
+  <% for item in @restaurants %>
+  <ul id="ul-example" class="row-fluid">
+    <li class="col-md-4" data-color="gray">
+      <div class="thumbnail">
+        <div class="thumbnail-image">
+          <img src=<%= item["restaurant"]["thumb"] %> class="img-rounded"/>
+        </div>
+        <div class="caption">
+          <h3><%= item["restaurant"]["name"] %></h3>
+          <p>Rating: <%= item["restaurant"]["user_rating"]["aggregate_rating"] %></p>
+          <p>Average Cost for Two: $<%= item["restaurant"]["average_cost_for_two"] %> </p>
+          <p><a href=<%= item["restaurant"]["url"]%> class="btn btn-primary" target="_blank">Learn More</a> <a href="#" class="btn">View</a></p>
+        </div>
+        <div class="checkbox_list">
+          <%= f.check_box :preferences, label: "checked" %>
+        </div>
       </div>
-      <div class="caption">
-        <h3><%= item["restaurant"]["name"] %></h3>
-        <p>State: Colorado</p>
-        <p>Year: 1982</p>
-        <p><a href=<%= item["url"]%> class="btn btn-primary">Learn More</a> <a href="#" class="btn">View</a></p>
-      </div>
-    </div>
-  </li>
-  <!-- ... //-->
-</ul>
+    </li>
+    <!-- ... //-->
+  </ul>
+  <% end %>
+  <%= f.submit "Submit", class: "submitButton"%>
 <% end %>
 
 <!--     <%= bootstrap_form_for(@group) do |f| %>
