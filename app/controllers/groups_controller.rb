@@ -50,8 +50,9 @@ class GroupsController < ApplicationController
     def search(rating_filter, location, keyword, cost_filter1, cost_filter2, cost_filter3, cost_filter4)
 	  require "uri"
 	  require "json"
-
-	  uri = URI.parse("https://developers.zomato.com/api/v2.1/search" + "?" + "q=" + keyword + "&entity_id" + location)
+	  loc_array = find(location)
+	  uri = URI.parse("https://developers.zomato.com/api/v2.1/search" + "?" + "q=" + keyword + "&lat=" + loc_array[0] + "&lon=" + loc_array[1])
+	  puts uri
 	  http = Net::HTTP.new(uri.host, uri.port)
 	  http.use_ssl = true
 
@@ -62,6 +63,17 @@ class GroupsController < ApplicationController
 	  response = http.request(request)      # => 301
 	  json = JSON.parse(response.body)            # => The body (HTML, XML, blob, whatever)
 	  return json["restaurants"]
+	end
+
+	def find(key) #path to file, and word to search for
+	  zipcode_path = File.join(File.dirname(__FILE__), "../assets/zipcodes.txt")
+	  File.open(zipcode_path,'r') do |file| #open file
+	    file.readlines.each { |line| #read lines array
+	      if line.split(',')[0] == key #match the SKU
+	        return [line.split(',')[1],line.split(',')[2]] #return the Model
+	      end
+	    }
+	  end
 	end
 
 	private

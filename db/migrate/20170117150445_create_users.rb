@@ -4,6 +4,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.integer :group_id
       t.string :username
       t.integer :preferences, array: true, default: []
+      t.string :restaurants
 
       t.timestamps
     end

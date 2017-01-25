@@ -13,13 +13,17 @@
   <h1>Group Name: <%= @group.group_name %></h1>
 </div>
   <%= bootstrap_form_for @user, :url => group_users_path(group_access_token: @group.access_token) do |f| %>
-  <%= f.text_field :username, placeholder: "Enter your name here", required: true %>
+  <div class="username_field">
+    <%= f.text_field :username, placeholder: "Enter your name here", required: true %>
+  </div>
+  <%= f.hidden_field :group_id, value: @group.id %>
+  <%= f.hidden_field :restaurants, value: @restaurants %>
   <% for item in @restaurants %>
   <ul id="ul-example" class="row-fluid">
     <li class="col-md-4" data-color="gray">
       <div class="thumbnail">
         <div class="thumbnail-image">
-          <img src=<%= item["restaurant"]["thumb"] %> class="img-rounded"/>
+          <img src=<%= item["restaurant"]["thumb"] %> />
         </div>
         <div class="caption">
           <h3><%= item["restaurant"]["name"] %></h3>
@@ -28,7 +32,7 @@
           <p><a href=<%= item["restaurant"]["url"]%> class="btn btn-primary" target="_blank">Learn More</a> <a href="#" class="btn">View</a></p>
         </div>
         <div class="checkbox_list">
-          <%= f.check_box :preferences, label: "checked" %>
+          <%= f.check_box :preferences, :multiple => "true", label: " " %>
         </div>
       </div>
     </li>
@@ -37,6 +41,7 @@
   <% end %>
   <%= f.submit "Submit", class: "submitButton"%>
 <% end %>
+
 
 <!--     <%= bootstrap_form_for(@group) do |f| %>
       <%= f.text_field :users, placeholder: "Enter your name here", required: true %>

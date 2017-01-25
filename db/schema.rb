@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20170117150445) do
     t.integer  "group_id"
     t.string   "username"
     t.integer  "preferences", default: [],              array: true
+    t.string   "restaurants"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end

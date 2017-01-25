@@ -67,8 +67,28 @@ img {
 
 .group_header{
     text-align: center;
-    margin-bottom: 10%;
+    margin-bottom: 4%;
 }
+
+img:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  width: 300px;
+  height: 220px;
+  background-color: white;
+  background-image:url("https://b.zmtcdn.com/images/placeholder_200.png?output-format=webp");
+}
+
+.checkbox_list {
+    margin-top: -25px;
+}
+
+.username_field {
+    margin-bottom: 3%;
+}
+
+
 
 a { color: inherit !important; } 
 
