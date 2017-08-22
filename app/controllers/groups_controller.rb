@@ -187,7 +187,7 @@ class GroupsController < ApplicationController
 					
 	private
 	  def group_params
-	    params.require(:group).permit(:group_name, :rating_filter, :keyword, :location, :access_token, :radius, :cost_filter1, :cost_filter2, :cost_filter3, :food_filter4, :food_filter5,
+	    params.require(:group).permit(:group_name, :rating_filter, :keyword, :location, :access_token, :radius, :cost_filter1, :cost_filter2, :cost_filter3, :cost_filter4, :food_filter5,
 	    :food_filter6,:food_filter7,:food_filter8,:food_filter9,:food_filter10,:food_filter11,:food_filter12, :users, :top_match)
 	  end
 end
