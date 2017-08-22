@@ -3,15 +3,21 @@
     <div class="pg">
         <div class="page-header">
             <div class="logo">
-                <a href="/"><h1 style="margin-left: 10px;">Feast</h1></a>
+                <a href="/"><h1 style="margin-left: 10px;">FeastFindr</h1></a>
             </div>
         </div>
     </div>
 <p>
 
+
+
 <div class="group_header">
   <h1>Group Name: <%= @group.group_name %></h1>
 </div>
+  <div class="h3" style="text-align: center; margin-top: -1%;
+    margin-bottom: 3%;">
+    Step 2: Choose your favorite options!
+  </div>
   <%= bootstrap_form_for @user, :url => group_users_path(group_access_token: @group.access_token) do |f| %>
   <div class="username_field">
     <%= f.text_field :username, placeholder: "Enter your name here", required: true %>
@@ -46,9 +52,12 @@
 <% end %>
 
 
+
 <!--     <%= bootstrap_form_for(@group) do |f| %>
       <%= f.text_field :users, placeholder: "Enter your name here", required: true %>
       <%= f.submit "Submit", class: "submitButton"%>
     <% end %> -->
 </p>
+
+
  

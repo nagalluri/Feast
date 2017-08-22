@@ -12,10 +12,20 @@ class UsersController < ApplicationController
 	end
 
 	def index
-	    @user = User.find_by(id: session[:id])
-	    @group = Group.find_by(access_token: params[:group_access_token])
-	    @group_users = User.where(:group_id => @group.id)
-	    @top_match = ""
+	  @user = User.find_by(id: session[:id])
+	  @group = Group.find_by(access_token: params[:group_access_token])
+	  @group_users = User.where(:group_id => @group.id)
+	  location_id = location_details(@group.location)
+      puts location_id
+      cuisines = food_filter(@group.cost_filter1, @group.cost_filter2, @group.cost_filter3, @group.cost_filter4, @group.food_filter5,
+	     @group.food_filter6, @group.food_filter7, @group.food_filter8, @group.food_filter9, @group.food_filter10, @group.food_filter11, @group.food_filter12)
+	  restaurants1 = search(@group.rating_filter, location_id, @group.keyword, cuisines)
+	  restaurants2 = search2(@group.rating_filter, location_id, @group.keyword, cuisines)
+	  @restaurants = restaurants1 + restaurants2		
+	  max_i = curr_match(@group_users, @restaurants)
+	  puts "restaurants max_i"
+	  @group.update(top_match: @restaurants[max_i])
+	  @top_match =  @restaurants[max_i]
 	    # @group = Group.find_by(id: @user.group_id)
 	end
 
@@ -30,7 +40,7 @@ class UsersController < ApplicationController
 	  @user.save
 	  @group_users = User.where(:group_id => @user.group_id)
 	  @group = Group.find_by(id: @user.group_id)
-      location_id = location_details(@group.location)
+	  location_id = location_details(@group.location)
       puts location_id
       cuisines = food_filter(@group.cost_filter1, @group.cost_filter2, @group.cost_filter3, @group.cost_filter4, @group.food_filter5,
 	     @group.food_filter6, @group.food_filter7, @group.food_filter8, @group.food_filter9, @group.food_filter10, @group.food_filter11, @group.food_filter12)
@@ -39,8 +49,8 @@ class UsersController < ApplicationController
 	  @restaurants = restaurants1 + restaurants2		
 	  max_i = curr_match(@group_users, @restaurants)
 	  puts "restaurants max_i"
+	  @group.update(top_match: @restaurants[max_i])
 	  @top_match = @restaurants[max_i]
-	  puts @top_match
 	  render :index
 	end
 

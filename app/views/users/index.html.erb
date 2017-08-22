@@ -3,7 +3,7 @@
     <div class="pg">
         <div class="page-header">
             <div class="logo">
-                <a href="/"><h1 style="margin-left: 10px;">Feast</h1></a>
+                <a href="/"><h1 style="margin-left: 10px;">FeastFindr</h1></a>
             </div>
         </div>
     </div>
@@ -14,6 +14,10 @@
   <h3>Current Best Match: <%= @top_match["restaurant"]["name"] %></h3>
 </div>
 
+<div class="h3" style="text-align: center; margin-top: -2%;
+    margin-bottom: 3%;">
+  Step 3: Let other group members vote through this link: <u>http://feast-app.herokuapp.com/<%= @group.access_token %></u>
+</div> 
 
 <div class="top_match">
     <ul id="ul-example" class="row-fluid">
@@ -40,3 +44,10 @@
           <li><%= user["username"] %></li>
     <% end %>
 </div>
+
+ <footer>
+  <ul class="copyright">
+     &copy; Copyright 2017 Nag Alluri
+     | Powered by <a title="Zomato" href="http://www.zomato.com/">Zomato</a>  
+  </ul>
+ </footer> 
