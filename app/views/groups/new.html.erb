@@ -11,13 +11,20 @@
     <%= bootstrap_form_for(@group) do |f| %>
       <%= f.text_field :group_name, placeholder: "i.e. Fantastic Foodies", required: true %>
       <%= f.text_field :location, placeholder: "i.e. San Francisco", required: true %>
-      <%= f.text_field :keyword, placeholder: "(Optional) Enter a search word. i.e. Vegetarian" %>
-      <%= f.select :rating_filter, [["1 Star +" , 1], ["2 Star +", 2], ["3 Star +", 3], ["4 Star +", 4], ["5 Star", 5]], { label: "Filter by Rating" }, { class: "selectpicker" } %>
+      <%= f.select :rating_filter, [["Rating" , 1], ["Cost", 2], ["Distance", 3]], { label: "Sort By" }, { class: "selectpicker" } %>
       <%= f.form_group :cost_filter do %>
-          <%= f.check_box :cost_filter1, label: "$", inline: true, checked: true %>
-          <%= f.check_box :cost_filter2, label: "$$", inline: true %>
-          <%= f.check_box :cost_filter3, label: "$$$", inline: true %>
-          <%= f.check_box :cost_filter4, label: "$$$$", inline: true %>
+          <%= f.check_box :cost_filter1, label: "American", inline: true%>
+          <%= f.check_box :cost_filter2, label: "Asian", inline: true %>
+          <%= f.check_box :cost_filter3, label: "Breakfast", inline: true %>
+          <%= f.check_box :cost_filter4, label: "Burger", inline: true %>
+          <%= f.check_box :food_filter5, label: "Chinese", inline: true %>
+          <%= f.check_box :food_filter6, label: "Fast Food", inline: true %>
+          <%= f.check_box :food_filter7, label: "Indian", inline: true %>
+          <%= f.check_box :food_filter8, label: "Mexican", inline: true %>
+          <%= f.check_box :food_filter9, label: "Pizza", inline: true %>
+          <%= f.check_box :food_filter10, label: "Seafood", inline: true %>
+          <%= f.check_box :food_filter11, label: "Thai", inline: true %>
+          <%= f.check_box :food_filter12, label: "Vegetarian", inline: true %>
       <% end %>
       <%= f.submit "Submit", class: "submitButton"%>
     <% end %>

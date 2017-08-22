@@ -22,14 +22,16 @@
   <ul id="ul-example" class="row-fluid">
     <li class="col-md-4" data-color="gray">
       <div class="thumbnail">
-        <div class="thumbnail-image">
+<!--         <div class="thumbnail-image">
           <img src=<%= item["restaurant"]["thumb"] %> />
-        </div>
+        </div> -->
         <div class="caption">
           <h3><%= item["restaurant"]["name"] %></h3>
+          <p>Cuisines: <%= item["restaurant"]["cuisines"] %></p>
           <p>Rating: <%= item["restaurant"]["user_rating"]["aggregate_rating"] %></p>
-          <p>Average Cost for Two: $<%= item["restaurant"]["average_cost_for_two"] %> </p>
-          <p><a href=<%= item["restaurant"]["url"]%> class="btn btn-primary" target="_blank">Learn More</a> <a href="#" class="btn">View</a></p>
+          <p>Votes: <%= item["restaurant"]["user_rating"]["votes"] %></p>
+          <p>Price: <%="$" * item["restaurant"]["price_range"] %> </p>
+          <p><a href=<%= item["restaurant"]["menu_url"]%> class="btn btn-primary" target="_blank" style="color: white !important;">Menu</a> <a href=<%= item["restaurant"]["photos_url"]%> class="btn btn-primary" target="_blank" style="color: white !important;" >Photos</a></p>
         </div>
         <div class="checkbox_list">
           <%= f.check_box :preferences, :multiple => "true", label: " " %>
@@ -39,6 +41,7 @@
     <!-- ... //-->
   </ul>
   <% end %>
+  <% hidden_field_tag("restaurants", @restaurants) %>
   <%= f.submit "Submit", class: "submitButton"%>
 <% end %>
 

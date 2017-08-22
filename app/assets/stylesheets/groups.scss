@@ -25,8 +25,15 @@
     margin-top: 15px;
 }
 .submitButton {
-    margin-left: 605px;
-    margin-top: 20px;
+    margin: 0 auto;
+    margin-top: 1%;
+    text-align: center;
+    display: inherit;
+    width: 25%;
+    margin-bottom: 100px;
+    background-color: #7cb658;
+    border-radius: 15px;
+    color: white;
 }
 .pg {
     font-size: 6em;
@@ -40,12 +47,12 @@
 
 img {
     width: 300px;
-    height: 220px;
+    height: 50%;
 }
 
 .thumbnail {
     width: 310px;
-    height: 450px;
+    height: 300px;
 }
 
 .col-md-4 {
@@ -55,14 +62,15 @@ img {
 
 .row-fluid {
     margin-right: 0%;
-    margin-left: 5%;
+    margin-left: 6%;
     float: left;
     padding: 0;
     text-align: center;
 }
 
 .caption {
-    text-align: left;
+    text-align: center;
+    margin-top: -5%
 }
 
 .group_header{

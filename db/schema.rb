@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170117150445) do
+ActiveRecord::Schema.define(version: 20170822025652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 20170117150445) do
     t.string   "users",                      array: true
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "top_match"
+    t.boolean  "food_filter5"
+    t.boolean  "food_filter6"
+    t.boolean  "food_filter7"
+    t.boolean  "food_filter8"
+    t.boolean  "food_filter9"
+    t.boolean  "food_filter10"
+    t.boolean  "food_filter11"
+    t.boolean  "food_filter12"
     t.index ["users"], name: "index_groups_on_users", using: :gin
   end
 

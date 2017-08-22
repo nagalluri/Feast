@@ -11,4 +11,32 @@
 
 <div class="group_header">
   <h1>Group Name: <%= @group.group_name %></h1>
+  <h3>Current Best Match: <%= @top_match["restaurant"]["name"] %></h3>
+</div>
+
+
+<div class="top_match">
+    <ul id="ul-example" class="row-fluid">
+    <li class="col-md-4" data-color="gray">
+      <div class="thumbnail">
+        <div class="caption">
+          <h3><%= @top_match["restaurant"]["name"] %></h3>
+          <p>Cuisines: <%= @top_match["restaurant"]["cuisines"] %></p>
+          <p>Rating: <%= @top_match["restaurant"]["user_rating"]["aggregate_rating"] %></p>
+          <p>Votes: <%= @top_match["restaurant"]["user_rating"]["votes"] %></p>
+          <p>Price: <%="$" * @top_match["restaurant"]["price_range"] %> </p>
+          <p><a href=<%= @top_match["restaurant"]["menu_url"]%> class="btn btn-primary" target="_blank" style="color: white !important;">Menu</a> <a href=<%= @top_match["restaurant"]["photos_url"]%> class="btn btn-primary" target="_blank" style="color: white !important;" >Photos</a></p>
+          <p>Address: <%=@top_match["restaurant"]["location"]["address"] %> </p>
+        </div>
+      </div>
+    </li>
+    <!-- ... //-->
+  </ul>
+</div>
+
+<div class="group_users">
+    <h2> Users who have voted </h2>
+    <% for user in @group_users %>
+          <li><%= user["username"] %></li>
+    <% end %>
 </div>
