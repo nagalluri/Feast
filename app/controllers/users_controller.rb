@@ -211,6 +211,6 @@ class UsersController < ApplicationController
 
 	private
 	  def user_params
-	    params.require(:user).permit(:username, :group_id, :preferences => [])
+	    params.require(:user).permit(:username, :group_id, :restaurants, :preferences => [])
 	  end
 end
