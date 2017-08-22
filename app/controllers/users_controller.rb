@@ -22,8 +22,8 @@ class UsersController < ApplicationController
 	def create
 	  @user = User.new(user_params)
 	  session[:id] = @user.id
-	  session[:restaurants] = @user.restaurants
-	  @user.restaurants = "null"
+	  # session[:restaurants] = @user.restaurants
+	  # @user.restaurants = "null"
 	  new_array = validate_array(@user.preferences)
 	  @user.preferences = new_array
 	  puts @user.preferences.length
