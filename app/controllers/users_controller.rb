@@ -88,6 +88,7 @@ class UsersController < ApplicationController
 	def location_details(location)
 	  require "uri"
 	  require "json"
+	  require 'net/http'
 	  puts location
 	  uri = URI.parse("https://developers.zomato.com/api/v2.1/locations" + "?" + "query=" + location)
 	  puts uri
@@ -108,6 +109,7 @@ class UsersController < ApplicationController
     def search(rating_filter, location, keyword, cuisines)
 	  require "uri"
 	  require "json"
+	  require 'net/http'
 	  uri = URI.parse("https://developers.zomato.com/api/v2.1/search" + "?" + "entity_id=" + location.to_s + "&entity_type=city" + "&cuisines=" + cuisines.to_s + "&sort=" + rating_filter)
 	  puts uri
 	  http = Net::HTTP.new(uri.host, uri.port)
@@ -137,6 +139,7 @@ class UsersController < ApplicationController
 	def search2(rating_filter, location, keyword, cuisines)
 	  require "uri"
 	  require "json"
+	  require 'net/http'
 	  loc_array = find(location)
 	  uri = URI.parse("https://developers.zomato.com/api/v2.1/search" + "?" + "entity_id=" + location.to_s + "&entity_type=city" + "&start=20" + "&cuisines=" + cuisines.to_s + "&sort=" + rating_filter)
 	  puts uri
