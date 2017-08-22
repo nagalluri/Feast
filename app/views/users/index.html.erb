@@ -16,7 +16,7 @@
 
 <div class="h3" style="text-align: center; margin-top: -2%;
     margin-bottom: 3%;">
-  Step 3: Let other group members vote through this link: <u>http://feast-app.herokuapp.com/<%= @group.access_token %></u>
+  Step 3: Let other group members vote through this link: <u>http://feast-app.herokuapp.com/groups/<%= @group.access_token %></u>
 </div> 
 
 <div class="top_match">
@@ -41,7 +41,7 @@
 <div class="group_users">
     <h2> Users who have voted </h2>
     <% for user in @group_users %>
-          <li><%= user["username"] %></li>
+          <div class="h4"><%= user["username"] %></div>
     <% end %>
 </div>
 
