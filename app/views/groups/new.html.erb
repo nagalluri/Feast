@@ -13,7 +13,7 @@
     </div>
     <%= bootstrap_form_for(@group) do |f| %>
       <%= f.text_field :group_name, placeholder: "i.e. Fantastic Foodies", required: true %>
-      <%= f.text_field :location, placeholder: "i.e. San Francisco", required: true %>
+      <%= f.text_field :location, placeholder: "i.e San Francisco,CA (Must be in City,State format)", required: true %>
       <%= f.select :rating_filter, [["Rating" , 1], ["Cost", 2], ["Distance", 3]], { label: "Sort By" }, { class: "selectpicker" } %>
       <%= f.form_group :cost_filter do %>
         <%= f.check_box :cost_filter1, label: "American", inline: true%>
